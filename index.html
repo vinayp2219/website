@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 50px;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #userDetails {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e0ffe0;
+      border-radius: 5px;
+      display: none;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login Page</h2>
+    <input type="text" id="username" placeholder="Enter username" />
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="login()">Login</button>
+    <div id="errorMsg" class="error"></div>
+    
+    <div id="userDetails">
+      <h3>Welcome, <span id="displayName"></span>!</h3>
+      <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+      <p><strong>Role:</strong> <span id="displayRole"></span></p>
+    </div>
+  </div>
+
+  <script>
+    const user = {
+      username: "vinay",
+      password: "12345",
+      name: "Pabbu Vinay Goud",
+      email: "vinay@example.com",
+      role: "Developer"
+    };
+
+    function login() {
+      const uname = document.getElementById("username").value;
+      const pwd = document.getElementById("password").value;
+      const error = document.getElementById("errorMsg");
+
+      if (uname === user.username && pwd === user.password) {
+        document.getElementById("displayName").innerText = user.name;
+        document.getElementById("displayEmail").innerText = user.email;
+        document.getElementById("displayRole").innerText = user.role;
+        document.getElementById("userDetails").style.display = "block";
+        error.innerText = "";
+      } else {
+        error.innerText = "Invalid username or password!";
+        document.getElementById("userDetails").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
